@@ -1,33 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Base Apparel coming soon page</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/notiflix-1.9.1.min.css" />
+    <title>We're coming soon</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col">
+        <div class="circulo">
+          <p class="logo">
+            BASE <br />
+            APPAREL
+          </p>
+        </div>
+      </div>
+      <div class="row row-cols-2">
+        <div class="col">
+          <p class="firstPart">
+            We're
+          </p>
+          <p class="secondPart">
+            coming <br />
+            soon
+          </p>
+          <p class="secondText">
+            Hello fellow shoppers! We're currently building our new fashion
+            store. Add your email below to stay up-to-date with announcements
+            and our launch deals.
+          </p>
+          <input
+            type="email"
+            class="mail"
+            id="mailInput"
+            placeholder="Email Address"
+            required
+          />
+          <button type="submit" id="button" onclick="validar()">
+            <img src="images/icon-arrow.svg" id="arrow" alt="" />
+          </button>
+        </div>
+        <img src="images/hero-desktop.jpg" wid alt="" />
+      </div>
+    </div>
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+          Frontend Mentor.
+        </a>
+        Coded by
+        <a
+          href="https://github.com/Martiniano-Olivera/Coming-soon-page"
+          target="_blank"
+        >
+          Martiniano Olivera.
+        </a>
+      </p>
+    </footer>
+    <script src="js/notiflix-1.9.1.min.js"></script>
+    <script>
+      Notiflix.Notify.Init({
+        width: "300px",
+        fontSize: "14px",
+        timeout: 4000,
+        messageMaxLength: 200
+      });
+      Notiflix.Confirm.Init({
+        width: "300px",
+        fontSize: "14px",
+        timeout: 4000,
+        messageMaxLength: 200
+      });
+      Notiflix.Loading.Init({
+        messageColor: "#fff",
+        svgSize: "100px",
+        clickToClose: false
+      });
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+      function validar() {
+        let mailInput = document.getElementById("mailInput").value;
 
-  We're coming soon
+        Notiflix.Loading.Pulse("Loading...");
+        Notiflix.Loading.Remove(2000);
 
-  Hello fellow shoppers! We're currently building our new fashion store. 
-  Add your email below to stay up-to-date with announcements and our launch deals.
-
-  Email Address
-  
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
-  </footer>
-</body>
+        if (mailInput !== "") {
+          console.log(`El valor es "${mailInput}"`);
+          setTimeout(() => {
+            Notiflix.Report.Success(
+              "E-mail enviado correctamente.",
+              "Su e-mail ha sido registrado correctamente y pronto nos pondremos en contacto con usted.",
+              "Continuar"
+            );
+          }, 2000);
+        } else {
+          setTimeout(() => {
+            Notiflix.Report.Failure(
+              "Fallo al enviar",
+              "El formato del correo no es correcto. Ingrese un correo válido.",
+              "Continuar"
+            );
+            console.log(`El campo está vacío`);
+          }, 2000);
+        }
+      }
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
